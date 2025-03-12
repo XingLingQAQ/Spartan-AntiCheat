@@ -1,0 +1,56 @@
+package ai.idealistic.vacan.listeners.protocol;
+
+import ai.idealistic.vacan.Register;
+import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
+import ai.idealistic.vacan.functionality.server.PluginBase;
+import ai.idealistic.vacan.listeners.bukkit.TeleportEvent;
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.events.ListenerPriority;
+import com.comphenix.protocol.events.PacketAdapter;
+import com.comphenix.protocol.events.PacketEvent;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+
+public class TeleportListener extends PacketAdapter {
+
+    public static final PacketType[] packetTypes = new PacketType[]{
+            PacketType.Play.Server.POSITION,
+            PacketType.Play.Server.RESPAWN
+    };
+
+    public TeleportListener() {
+        super(
+                Register.plugin,
+                ListenerPriority.HIGHEST,
+                packetTypes
+        );
+    }
+
+    @Override
+    public void onPacketSending(PacketEvent event) {
+        Player player = event.getPlayer();
+        PlayerProtocol protocol = PluginBase.getProtocol(player);
+
+        if (protocol.isBedrockPlayer()) {
+            return;
+        }
+        PacketType packetType = event.getPacket().getType();
+
+        if (packetType.equals(PacketType.Play.Server.POSITION)) {
+            TeleportEvent.teleport(player, true, event);
+
+        } else if (packetType.equals(PacketType.Play.Server.RESPAWN)) {
+            TeleportEvent.respawn(player, true, event);
+        }
+    }
+
+    public static Location add(Location f, Location t) {
+        return new Location(
+                t.getWorld(),
+                f.getX() + t.getX(),
+                f.getY() + t.getY(),
+                f.getZ() + t.getZ()
+        );
+    }
+
+}
