@@ -1,12 +1,11 @@
 package ai.idealistic.vacan.abstraction.check;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.profiling.PlayerProfile;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
-import ai.idealistic.vacan.api.API;
 import ai.idealistic.vacan.api.CheckCancelEvent;
 import ai.idealistic.vacan.api.PlayerViolationCommandEvent;
 import ai.idealistic.vacan.api.PlayerViolationEvent;
+import ai.idealistic.vacan.api.VacanAPI;
 import ai.idealistic.vacan.functionality.connection.CloudConnections;
 import ai.idealistic.vacan.functionality.connection.PluginEdition;
 import ai.idealistic.vacan.functionality.moderation.DetectionNotifications;
@@ -314,7 +313,7 @@ public abstract class CheckDetection extends CheckProcess {
                 + "(" + preventionLevelIdentifier + " " + prevention + "),"
                 + "(" + punishmentLevelIdentifier + " " + punishment + "),"
                 + "(Server-Version: " + MultiVersion.serverVersion.toString() + "), "
-                + "(Plugin-Version: " + API.getVersion() + "), "
+                + "(Plugin-Version: " + VacanAPI.getVersion() + "), "
                 + "(Silent: " + hackType.getCheck().isSilent(this.protocol.getDataType(), this.protocol.getWorld().getName()) + "), "
                 + "(Punish: " + hackType.getCheck().canPunish(this.protocol.getDataType()) + "), "
                 + "(Packets: " + this.protocol.packetsEnabled() + "), "
@@ -451,7 +450,7 @@ public abstract class CheckDetection extends CheckProcess {
         return () -> {
             if (location != null
                     || groundTeleport) {
-                this.protocol.profile().getRunner(Enums.HackType.MorePackets).addDisableCause(
+                this.protocol.profile().getRunner(CheckEnums.HackType.MORE_PACKETS).addDisableCause(
                         "Prevention from checks",
                         null,
                         5

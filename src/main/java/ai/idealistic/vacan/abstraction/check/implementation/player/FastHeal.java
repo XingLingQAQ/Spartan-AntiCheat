@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.abstraction.check.implementation.player;
 
-import ai.idealistic.vacan.abstraction.Enums.HackType;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums.HackType;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.check.definition.ImplementedDetection;
 import ai.idealistic.vacan.abstraction.data.Buffer;

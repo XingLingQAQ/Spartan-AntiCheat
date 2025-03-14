@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.abstraction.check.implementation.world;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.check.definition.ImplementedDetection;
 import ai.idealistic.vacan.abstraction.profiling.MiningHistory;
@@ -63,7 +63,7 @@ public class XRay extends CheckRunner {
 
     private final ImplementedDetection[] detections;
 
-    public XRay(Enums.HackType hackType, PlayerProtocol protocol) {
+    public XRay(CheckEnums.HackType hackType, PlayerProtocol protocol) {
         super(hackType, protocol);
         this.detections = new ImplementedDetection[World.Environment.values().length];
 

@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.functionality.moderation;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.configuration.implementation.Settings;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.functionality.server.Config;
@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CrossServerNotifications {
 
-    private static final int rowLimit = Enums.HackType.values().length;
+    private static final int rowLimit = CheckEnums.HackType.values().length;
     private static final Map<Long, Boolean> processed = new OverflowMap<>(
             new ConcurrentHashMap<>(),
             rowLimit
@@ -54,7 +54,7 @@ public class CrossServerNotifications {
                             playerName = rs.getString("player_name");
 
                     if (playerName != null) {
-                        for (Enums.HackType hackType : Enums.HackType.values()) {
+                        for (CheckEnums.HackType hackType : CheckEnums.HackType.values()) {
                             if (hackType.toString().equals(functionality)) {
                                 String notification = rs.getString("notification"),
                                         serverName = rs.getString("server_name"),

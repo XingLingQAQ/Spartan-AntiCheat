@@ -1,9 +1,9 @@
 package ai.idealistic.vacan.functionality.tracking;
 
 import ai.idealistic.vacan.Register;
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.Check;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.profiling.MiningHistory;
 import ai.idealistic.vacan.abstraction.profiling.PlayerProfile;
@@ -29,7 +29,7 @@ public class ResearchEngine {
 
     private static boolean firstLoad = false;
     public static final Map<Integer, Double> averageViolationTime = new ConcurrentHashMap<>();
-    public static Map<Enums.HackType, Collection<Check.DataType>> violationFired = new ConcurrentHashMap<>();
+    public static Map<CheckEnums.HackType, Collection<Check.DataType>> violationFired = new ConcurrentHashMap<>();
     private static long schedulerTicks = 0L;
     private static final Map<String, PlayerProfile> playerProfiles = new ConcurrentHashMap<>();
     private static final GeneralThread.ThreadPool statisticsThread = new GeneralThread.ThreadPool(1L);
@@ -103,7 +103,7 @@ public class ResearchEngine {
 
     // Separator
 
-    public static void resetData(Enums.HackType hackType) {
+    public static void resetData(CheckEnums.HackType hackType) {
         if (firstLoad) {
             statisticsThread.execute(() -> {
                 String hackTypeString = hackType.toString();
@@ -374,7 +374,7 @@ public class ResearchEngine {
                             );
 
                             if (player != null) {
-                                for (Enums.HackType hackType : Enums.HackType.values()) {
+                                for (CheckEnums.HackType hackType : CheckEnums.HackType.values()) {
                                     if (hackTypeString.equals(hackType.toString())) {
                                         Check.DataType dataType = findDataType(data);
                                         PlayerProfile profile = getPlayerProfile(player);
@@ -490,8 +490,8 @@ public class ResearchEngine {
         if ((force || !violationFired.isEmpty()) && !playerProfiles.isEmpty()) {
             Collection<PlayerProfile> profiles = playerProfiles.values();
 
-            for (Enums.HackType hackType : (force
-                    ? Arrays.asList(Enums.HackType.values())
+            for (CheckEnums.HackType hackType : (force
+                    ? Arrays.asList(CheckEnums.HackType.values())
                     : violationFired.keySet())) {
                 Collection<Check.DataType> dataTypes = violationFired.get(hackType);
 
@@ -600,7 +600,7 @@ public class ResearchEngine {
         }
     }
 
-    public static void queueToCache(Enums.HackType hackType, Check.DataType dataType) {
+    public static void queueToCache(CheckEnums.HackType hackType, Check.DataType dataType) {
         violationFired.computeIfAbsent(
                 hackType,
                 k -> new CopyOnWriteArrayList<>()

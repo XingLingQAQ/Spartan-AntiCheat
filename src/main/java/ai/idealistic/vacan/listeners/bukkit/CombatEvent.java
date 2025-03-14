@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.listeners.bukkit;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.event.EntityAttackPlayerEvent;
 import ai.idealistic.vacan.abstraction.event.PlayerAttackEvent;
 import ai.idealistic.vacan.abstraction.event.PlayerUseEvent;
@@ -17,12 +17,12 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 public class CombatEvent implements Listener {
 
-    private static final Enums.HackType[] handledChecks = new Enums.HackType[]{
-            Enums.HackType.KillAura,
-            Enums.HackType.HitReach,
-            Enums.HackType.NoSwing,
-            Enums.HackType.Criticals,
-            Enums.HackType.FastClicks
+    private static final CheckEnums.HackType[] handledChecks = new CheckEnums.HackType[]{
+            CheckEnums.HackType.KILL_AURA,
+            CheckEnums.HackType.HIT_REACH,
+            CheckEnums.HackType.NO_SWING,
+            CheckEnums.HackType.CRITICALS,
+            CheckEnums.HackType.FAST_CLICKS
     };
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -52,7 +52,7 @@ public class CombatEvent implements Listener {
                         );
                         protocol.profile().executeRunners(cancelled, event);
 
-                        for (Enums.HackType hackType : handledChecks) {
+                        for (CheckEnums.HackType hackType : handledChecks) {
                             if (protocol.profile().getRunner(hackType).prevent()) {
                                 e.setCancelled(true);
                             }

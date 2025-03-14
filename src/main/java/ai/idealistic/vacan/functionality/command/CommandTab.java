@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.functionality.command;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
+import ai.idealistic.vacan.api.Permission;
 import ai.idealistic.vacan.functionality.server.Permissions;
 import ai.idealistic.vacan.functionality.server.PluginBase;
 import org.bukkit.command.Command;
@@ -13,33 +13,33 @@ import java.util.*;
 
 public class CommandTab implements TabCompleter {
 
-    private static final Map<String, Enums.Permission[]> commands = new LinkedHashMap<>(18); // Attention
+    private static final Map<String, Permission[]> commands = new LinkedHashMap<>(18); // Attention
 
     static {
-        commands.put("menu", new Enums.Permission[]{Enums.Permission.INFO, Enums.Permission.MANAGE});
-        commands.put("panic", new Enums.Permission[]{Enums.Permission.MANAGE});
-        commands.put("toggle", new Enums.Permission[]{Enums.Permission.MANAGE});
-        commands.put("rl", new Enums.Permission[]{Enums.Permission.RELOAD});
-        commands.put("reload", new Enums.Permission[]{Enums.Permission.RELOAD});
-        commands.put("notifications", new Enums.Permission[]{Enums.Permission.NOTIFICATIONS});
-        commands.put("verbose", new Enums.Permission[]{Enums.Permission.NOTIFICATIONS});
-        commands.put("info", new Enums.Permission[]{Enums.Permission.INFO});
-        commands.put("kick", new Enums.Permission[]{Enums.Permission.KICK});
-        commands.put("warn", new Enums.Permission[]{Enums.Permission.WARN});
-        commands.put("bypass", new Enums.Permission[]{Enums.Permission.USE_BYPASS});
-        commands.put("conditions", new Enums.Permission[]{Enums.Permission.CONDITION});
-        commands.put("moderation", new Enums.Permission[]{
-                Enums.Permission.KICK,
-                Enums.Permission.WARN,
-                Enums.Permission.USE_BYPASS,
-                Enums.Permission.WAVE
+        commands.put("menu", new Permission[]{Permission.INFO, Permission.MANAGE});
+        commands.put("panic", new Permission[]{Permission.MANAGE});
+        commands.put("toggle", new Permission[]{Permission.MANAGE});
+        commands.put("rl", new Permission[]{Permission.RELOAD});
+        commands.put("reload", new Permission[]{Permission.RELOAD});
+        commands.put("notifications", new Permission[]{Permission.NOTIFICATIONS});
+        commands.put("verbose", new Permission[]{Permission.NOTIFICATIONS});
+        commands.put("info", new Permission[]{Permission.INFO});
+        commands.put("kick", new Permission[]{Permission.KICK});
+        commands.put("warn", new Permission[]{Permission.WARN});
+        commands.put("bypass", new Permission[]{Permission.USE_BYPASS});
+        commands.put("conditions", new Permission[]{Permission.CONDITION});
+        commands.put("moderation", new Permission[]{
+                Permission.KICK,
+                Permission.WARN,
+                Permission.USE_BYPASS,
+                Permission.WAVE
         });
-        commands.put("proxy-command", new Enums.Permission[]{});
-        commands.put("wave add", new Enums.Permission[]{Enums.Permission.WAVE});
-        commands.put("wave remove", new Enums.Permission[]{Enums.Permission.WAVE});
-        commands.put("wave clear", new Enums.Permission[]{Enums.Permission.WAVE});
-        commands.put("wave run", new Enums.Permission[]{Enums.Permission.WAVE});
-        commands.put("wave list", new Enums.Permission[]{Enums.Permission.WAVE});
+        commands.put("proxy-command", new Permission[]{});
+        commands.put("wave add", new Permission[]{Permission.WAVE});
+        commands.put("wave remove", new Permission[]{Permission.WAVE});
+        commands.put("wave clear", new Permission[]{Permission.WAVE});
+        commands.put("wave run", new Permission[]{Permission.WAVE});
+        commands.put("wave list", new Permission[]{Permission.WAVE});
     }
 
     @Override
@@ -52,7 +52,7 @@ public class CommandTab implements TabCompleter {
             Player p = isPlayer ? (Player) sender : null;
             String argAbstract = args[0].toLowerCase();
 
-            for (Map.Entry<String, Enums.Permission[]> entry : commands.entrySet()) {
+            for (Map.Entry<String, Permission[]> entry : commands.entrySet()) {
                 boolean add;
 
                 if (!isPlayer) {
@@ -61,14 +61,14 @@ public class CommandTab implements TabCompleter {
                     add = false;
 
                     if (entry.getValue().length > 0) {
-                        for (Enums.Permission permission : entry.getValue()) {
+                        for (Permission permission : entry.getValue()) {
                             if (Permissions.has(p, permission)) {
                                 add = true;
                                 break;
                             }
                         }
                     } else {
-                        add = Permissions.has(p, Enums.Permission.ADMIN);
+                        add = Permissions.has(p, Permission.ADMIN);
                     }
                 }
 

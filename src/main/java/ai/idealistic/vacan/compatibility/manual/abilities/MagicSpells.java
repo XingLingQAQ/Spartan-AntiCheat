@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.compatibility.manual.abilities;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.compatibility.Compatibility;
 import ai.idealistic.vacan.functionality.server.Config;
 import ai.idealistic.vacan.functionality.server.PluginBase;
@@ -23,9 +23,9 @@ public class MagicSpells implements Listener {
                 Config.compatibility.evadeFalsePositives(
                         PluginBase.getProtocol((Player) caster),
                         Compatibility.CompatibilityType.MAGIC_SPELLS,
-                        new Enums.HackCategoryType[]{
-                                Enums.HackCategoryType.MOVEMENT,
-                                Enums.HackCategoryType.COMBAT
+                        new CheckEnums.HackCategoryType[]{
+                                CheckEnums.HackCategoryType.MOVEMENT,
+                                CheckEnums.HackCategoryType.COMBAT
                         },
                         40
                 );
@@ -42,9 +42,9 @@ public class MagicSpells implements Listener {
                 Config.compatibility.evadeFalsePositives(
                         PluginBase.getProtocol((Player) caster),
                         Compatibility.CompatibilityType.MAGIC_SPELLS,
-                        new Enums.HackCategoryType[]{
-                                Enums.HackCategoryType.MOVEMENT,
-                                Enums.HackCategoryType.COMBAT
+                        new CheckEnums.HackCategoryType[]{
+                                CheckEnums.HackCategoryType.MOVEMENT,
+                                CheckEnums.HackCategoryType.COMBAT
                         },
                         40
                 );

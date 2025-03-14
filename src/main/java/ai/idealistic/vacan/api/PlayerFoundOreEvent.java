@@ -25,6 +25,7 @@ public class PlayerFoundOreEvent extends Event implements Cancellable {
         l = location;
         ma = material;
         cancelled = false;
+        new me.vagdedes.spartan.api.PlayerFoundOreEvent(player, message, location, material);
     }
 
     public Player getPlayer() {

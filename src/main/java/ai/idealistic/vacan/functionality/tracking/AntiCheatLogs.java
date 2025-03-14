@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.functionality.tracking;
 
 import ai.idealistic.vacan.Register;
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.functionality.server.Config;
 import ai.idealistic.vacan.functionality.server.PluginBase;
@@ -98,7 +98,7 @@ public class AntiCheatLogs {
                                String information,
                                boolean console,
                                Material material,
-                               Enums.HackType hackType,
+                               CheckEnums.HackType hackType,
                                long time) {
         rawLogInfo(time, information, console, true, false);
         Config.sql.logInfo(p, notification, information, material, hackType, time);

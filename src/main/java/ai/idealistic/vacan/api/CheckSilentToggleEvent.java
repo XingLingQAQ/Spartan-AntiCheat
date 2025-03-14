@@ -1,31 +1,36 @@
 package ai.idealistic.vacan.api;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import lombok.Getter;
 import lombok.Setter;
+import me.vagdedes.spartan.api.system.Enums;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 public class CheckSilentToggleEvent extends Event implements Cancellable {
 
-    private final Enums.HackType ht;
-    private final Enums.ToggleAction ta;
+    private final CheckEnums.HackType ht;
+    private final ToggleAction ta;
     @Setter
     @Getter
     private boolean cancelled;
 
-    public CheckSilentToggleEvent(Enums.HackType hackType, Enums.ToggleAction toggleAction) {
+    public CheckSilentToggleEvent(CheckEnums.HackType hackType, ToggleAction toggleAction) {
         ht = hackType;
         ta = toggleAction;
         cancelled = false;
+        new me.vagdedes.spartan.api.CheckSilentToggleEvent(
+                hackType,
+                Enums.ToggleAction.valueOf(toggleAction.toString())
+        );
     }
 
-    public Enums.HackType getHackType() {
+    public CheckEnums.HackType getHackType() {
         return ht;
     }
 
-    public Enums.ToggleAction getToggleAction() {
+    public ToggleAction getToggleAction() {
         return ta;
     }
 

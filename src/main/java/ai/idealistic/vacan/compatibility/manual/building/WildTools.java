@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.compatibility.manual.building;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.compatibility.Compatibility;
 import ai.idealistic.vacan.functionality.server.Config;
 import ai.idealistic.vacan.functionality.server.PluginBase;
@@ -19,10 +19,10 @@ public class WildTools implements Listener {
             Config.compatibility.evadeFalsePositives(
                     PluginBase.getProtocol(e.getPlayer()),
                     compatibilityType,
-                    new Enums.HackType[]{
-                            Enums.HackType.FastBreak,
-                            Enums.HackType.BlockReach,
-                            Enums.HackType.GhostHand,
+                    new CheckEnums.HackType[]{
+                            CheckEnums.HackType.FAST_BREAK,
+                            CheckEnums.HackType.BLOCK_REACH,
+                            CheckEnums.HackType.GHOST_HAND,
                     },
                     40
             );

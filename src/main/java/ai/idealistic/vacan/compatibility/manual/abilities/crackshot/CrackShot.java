@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.compatibility.manual.abilities.crackshot;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.data.Buffer;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.compatibility.Compatibility;
@@ -36,9 +36,9 @@ public class CrackShot implements Listener {
                 Config.compatibility.evadeFalsePositives(
                         protocol,
                         Compatibility.CompatibilityType.CRACK_SHOT,
-                        new Enums.HackCategoryType[]{
-                                Enums.HackCategoryType.MOVEMENT,
-                                Enums.HackCategoryType.COMBAT
+                        new CheckEnums.HackCategoryType[]{
+                                CheckEnums.HackCategoryType.MOVEMENT,
+                                CheckEnums.HackCategoryType.COMBAT
                         },
                         20
                 );
@@ -60,9 +60,9 @@ public class CrackShot implements Listener {
             Config.compatibility.evadeFalsePositives(
                     PluginBase.getProtocol(e.getPlayer()),
                     Compatibility.CompatibilityType.CRACK_SHOT,
-                    new Enums.HackCategoryType[]{
-                            Enums.HackCategoryType.MOVEMENT,
-                            Enums.HackCategoryType.COMBAT
+                    new CheckEnums.HackCategoryType[]{
+                            CheckEnums.HackCategoryType.MOVEMENT,
+                            CheckEnums.HackCategoryType.COMBAT
                     },
                     40
             );
@@ -75,9 +75,9 @@ public class CrackShot implements Listener {
             Config.compatibility.evadeFalsePositives(
                     PluginBase.getProtocol(e.getPlayer()),
                     Compatibility.CompatibilityType.CRACK_SHOT,
-                    new Enums.HackCategoryType[]{
-                            Enums.HackCategoryType.MOVEMENT,
-                            Enums.HackCategoryType.COMBAT
+                    new CheckEnums.HackCategoryType[]{
+                            CheckEnums.HackCategoryType.MOVEMENT,
+                            CheckEnums.HackCategoryType.COMBAT
                     },
                     40
             );
@@ -93,9 +93,9 @@ public class CrackShot implements Listener {
                 Config.compatibility.evadeFalsePositives(
                         PluginBase.getProtocol((Player) entity),
                         Compatibility.CompatibilityType.CRACK_SHOT,
-                        new Enums.HackCategoryType[]{
-                                Enums.HackCategoryType.MOVEMENT,
-                                Enums.HackCategoryType.COMBAT
+                        new CheckEnums.HackCategoryType[]{
+                                CheckEnums.HackCategoryType.MOVEMENT,
+                                CheckEnums.HackCategoryType.COMBAT
                         },
                         60
                 );
@@ -115,9 +115,9 @@ public class CrackShot implements Listener {
                     Config.compatibility.evadeFalsePositives(
                             p,
                             Compatibility.CompatibilityType.CRACK_SHOT,
-                            new Enums.HackCategoryType[]{
-                                    Enums.HackCategoryType.MOVEMENT,
-                                    Enums.HackCategoryType.COMBAT
+                            new CheckEnums.HackCategoryType[]{
+                                    CheckEnums.HackCategoryType.MOVEMENT,
+                                    CheckEnums.HackCategoryType.COMBAT
                             },
                             60
                     );
@@ -138,9 +138,9 @@ public class CrackShot implements Listener {
                     Config.compatibility.evadeFalsePositives(
                             p,
                             Compatibility.CompatibilityType.CRACK_SHOT,
-                            new Enums.HackCategoryType[]{
-                                    Enums.HackCategoryType.MOVEMENT,
-                                    Enums.HackCategoryType.COMBAT
+                            new CheckEnums.HackCategoryType[]{
+                                    CheckEnums.HackCategoryType.MOVEMENT,
+                                    CheckEnums.HackCategoryType.COMBAT
                             },
                             60
                     );

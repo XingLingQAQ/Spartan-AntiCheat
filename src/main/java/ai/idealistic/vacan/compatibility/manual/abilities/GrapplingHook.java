@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.compatibility.manual.abilities;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.compatibility.Compatibility;
 import ai.idealistic.vacan.functionality.server.Config;
@@ -44,9 +44,9 @@ public class GrapplingHook implements Listener {
                         Config.compatibility.evadeFalsePositives(
                                 p,
                                 Compatibility.CompatibilityType.GRAPPLING_HOOK,
-                                new Enums.HackCategoryType[]{
-                                        Enums.HackCategoryType.MOVEMENT,
-                                        Enums.HackCategoryType.COMBAT
+                                new CheckEnums.HackCategoryType[]{
+                                        CheckEnums.HackCategoryType.MOVEMENT,
+                                        CheckEnums.HackCategoryType.COMBAT
                                 },
                                 40
                         );
@@ -54,9 +54,9 @@ public class GrapplingHook implements Listener {
                         Config.compatibility.evadeFalsePositives(
                                 p,
                                 Compatibility.CompatibilityType.GRAPPLING_HOOK,
-                                new Enums.HackCategoryType[]{
-                                        Enums.HackCategoryType.MOVEMENT,
-                                        Enums.HackCategoryType.COMBAT
+                                new CheckEnums.HackCategoryType[]{
+                                        CheckEnums.HackCategoryType.MOVEMENT,
+                                        CheckEnums.HackCategoryType.COMBAT
                                 },
                                 10
                         );

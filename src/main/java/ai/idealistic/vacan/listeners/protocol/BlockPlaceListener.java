@@ -7,7 +7,7 @@ import ai.idealistic.vacan.compatibility.necessary.protocollib.ProtocolLib;
 import ai.idealistic.vacan.functionality.concurrent.CheckThread;
 import ai.idealistic.vacan.functionality.server.MultiVersion;
 import ai.idealistic.vacan.functionality.server.PluginBase;
-import ai.idealistic.vacan.listeners.bukkit.BlockPlaceEvent;
+import ai.idealistic.vacan.listeners.bukkit.PlaceEvent;
 import ai.idealistic.vacan.listeners.bukkit.standalone.ChunksEvent;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.ListenerPriority;
@@ -90,7 +90,7 @@ public class BlockPlaceListener extends PacketAdapter {
                                     material
                             ));
 
-                            BlockPlaceEvent.event(protocol, block, blockAgainst, event);
+                            PlaceEvent.event(protocol, block, blockAgainst, event, true);
                             protocol.rightClickCounter = 0;
                         } else {
                             protocol.rightClickCounter++;

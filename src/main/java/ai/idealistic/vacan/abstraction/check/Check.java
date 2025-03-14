@@ -1,10 +1,10 @@
 package ai.idealistic.vacan.abstraction.check;
 
 import ai.idealistic.vacan.Register;
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.api.CheckPunishmentToggleEvent;
 import ai.idealistic.vacan.api.CheckSilentToggleEvent;
 import ai.idealistic.vacan.api.CheckToggleEvent;
+import ai.idealistic.vacan.api.ToggleAction;
 import ai.idealistic.vacan.functionality.moderation.AwarenessNotifications;
 import ai.idealistic.vacan.functionality.server.Config;
 import ai.idealistic.vacan.functionality.tracking.ResearchEngine;
@@ -94,7 +94,7 @@ public class Check {
 
     // Object
 
-    public final Enums.HackType hackType;
+    public final CheckEnums.HackType hackType;
     @Getter
     private String name;
     private final Map<String, Object> options;
@@ -107,7 +107,7 @@ public class Check {
 
     // Object Methods
 
-    public Check(Enums.HackType hackType) {
+    public Check(CheckEnums.HackType hackType) {
         this.options = new ConcurrentHashMap<>();
         this.hackType = hackType;
 
@@ -323,7 +323,7 @@ public class Check {
             CheckToggleEvent event;
 
             if (Config.settings.getBoolean("Important.enable_developer_api")) {
-                event = new CheckToggleEvent(this.hackType, b ? Enums.ToggleAction.ENABLE : Enums.ToggleAction.DISABLE);
+                event = new CheckToggleEvent(this.hackType, b ? ToggleAction.ENABLE : ToggleAction.DISABLE);
                 Bukkit.getPluginManager().callEvent(event);
             } else {
                 event = null;
@@ -344,7 +344,7 @@ public class Check {
         if (name.length() > 32) {
             name = name.substring(0, 32);
         }
-        for (Enums.HackType hackType : Enums.HackType.values()) {
+        for (CheckEnums.HackType hackType : CheckEnums.HackType.values()) {
             if (!hackType.equals(this.hackType)
                     && (name.equalsIgnoreCase(hackType.toString()))
                     || name.equalsIgnoreCase(hackType.getCheck().getName())) {
@@ -543,7 +543,7 @@ public class Check {
             CheckSilentToggleEvent event;
 
             if (Config.settings.getBoolean("Important.enable_developer_api")) {
-                event = new CheckSilentToggleEvent(this.hackType, b ? Enums.ToggleAction.ENABLE : Enums.ToggleAction.DISABLE);
+                event = new CheckSilentToggleEvent(this.hackType, b ? ToggleAction.ENABLE : ToggleAction.DISABLE);
                 Bukkit.getPluginManager().callEvent(event);
             } else {
                 event = null;
@@ -573,7 +573,7 @@ public class Check {
             CheckPunishmentToggleEvent event;
 
             if (Config.settings.getBoolean("Important.enable_developer_api")) {
-                event = new CheckPunishmentToggleEvent(this.hackType, b ? Enums.ToggleAction.ENABLE : Enums.ToggleAction.DISABLE);
+                event = new CheckPunishmentToggleEvent(this.hackType, b ? ToggleAction.ENABLE : ToggleAction.DISABLE);
                 Bukkit.getPluginManager().callEvent(event);
             } else {
                 event = null;

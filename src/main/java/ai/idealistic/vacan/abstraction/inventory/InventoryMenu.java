@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.abstraction.inventory;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
+import ai.idealistic.vacan.api.Permission;
 import ai.idealistic.vacan.functionality.server.Config;
 import ai.idealistic.vacan.functionality.server.Permissions;
 import ai.idealistic.vacan.functionality.server.PluginBase;
@@ -16,13 +16,13 @@ public abstract class InventoryMenu {
 
     protected String title;
 
-    protected final Enums.Permission[] permissions;
+    protected final Permission[] permissions;
     protected ItemStack itemStack;
     protected ClickType clickType;
     protected int slot, size;
     protected Inventory inventory;
 
-    public InventoryMenu(String title, int size, Enums.Permission[] permissions) {
+    public InventoryMenu(String title, int size, Permission[] permissions) {
         this.title = title;
         this.itemStack = null;
         this.clickType = null;
@@ -32,8 +32,8 @@ public abstract class InventoryMenu {
         this.permissions = permissions;
     }
 
-    public InventoryMenu(String title, int size, Enums.Permission permissions) {
-        this(title, size, new Enums.Permission[]{permissions});
+    public InventoryMenu(String title, int size, Permission permissions) {
+        this(title, size, new Permission[]{permissions});
     }
 
     protected Inventory setInventory(PlayerProtocol protocol, String title, int size) {
@@ -76,7 +76,7 @@ public abstract class InventoryMenu {
         } else {
             boolean check = false;
 
-            for (Enums.Permission permission : permissions) {
+            for (Permission permission : permissions) {
                 if (Permissions.has(protocol.bukkit(), permission)) {
                     check = true;
                     break;
@@ -116,7 +116,7 @@ public abstract class InventoryMenu {
             } else {
                 boolean check = false;
 
-                for (Enums.Permission permission : permissions) {
+                for (Permission permission : permissions) {
                     if (Permissions.has(protocol.bukkit(), permission)) {
                         check = true;
                         break;

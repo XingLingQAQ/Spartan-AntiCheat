@@ -12,6 +12,7 @@ public class VacanReloadEvent extends Event implements Cancellable {
 
     public VacanReloadEvent() {
         cancelled = false;
+        new me.vagdedes.spartan.api.SpartanReloadEvent();
     }
 
     public Plugin getPlugin() {

@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.abstraction.profiling;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.Check;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.functionality.server.PluginBase;
@@ -35,7 +35,7 @@ public class PlayerProfile {
     public PlayerProfile(String name) {
         this.name = name;
         this.skull = null;
-        this.runners = new CheckRunner[Enums.HackType.values().length];
+        this.runners = new CheckRunner[CheckEnums.HackType.values().length];
         this.miningHistory = new MiningHistory[MiningHistory.MiningOre.values().length];
         this.lastDataType = Check.DataType.JAVA;
         this.lastDetectionType = PluginBase.packetsEnabled()
@@ -64,7 +64,7 @@ public class PlayerProfile {
         this.name = protocol.bukkit().getName();
         this.offlinePlayer = protocol.bukkit(); // Attention
         this.skull = null;
-        this.runners = new CheckRunner[Enums.HackType.values().length];
+        this.runners = new CheckRunner[CheckEnums.HackType.values().length];
         this.miningHistory = new MiningHistory[MiningHistory.MiningOre.values().length];
         this.lastDataType = protocol.getDataType();
         this.lastDetectionType = protocol.packetsEnabled()
@@ -96,7 +96,7 @@ public class PlayerProfile {
         return protocol != null && PluginBase.isOnline(protocol);
     }
 
-    public CheckRunner getRunner(Enums.HackType hackType) {
+    public CheckRunner getRunner(CheckEnums.HackType hackType) {
         return this.runners[hackType.ordinal()];
     }
 
@@ -107,7 +107,7 @@ public class PlayerProfile {
     }
 
     private void registerRunners(PlayerProtocol protocol) {
-        for (Enums.HackType hackType : Enums.HackType.values()) {
+        for (CheckEnums.HackType hackType : CheckEnums.HackType.values()) {
             try {
                 this.runners[hackType.ordinal()] = (CheckRunner) hackType.executor
                         .getConstructor(hackType.getClass(), PlayerProtocol.class)

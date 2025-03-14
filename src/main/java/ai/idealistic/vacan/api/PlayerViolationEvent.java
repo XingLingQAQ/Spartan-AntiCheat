@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.api;
 
-import ai.idealistic.vacan.abstraction.Enums.HackType;
+import ai.idealistic.vacan.abstraction.check.CheckEnums.HackType;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.entity.Player;
@@ -22,6 +22,7 @@ public class PlayerViolationEvent extends Event implements Cancellable {
         h = HackType;
         m = message;
         cancelled = false;
+        new me.vagdedes.spartan.api.PlayerViolationEvent(player, HackType, message);
     }
 
     public Player getPlayer() {

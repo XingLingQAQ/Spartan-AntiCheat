@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.compatibility.manual.abilities;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.compatibility.Compatibility;
 import ai.idealistic.vacan.functionality.server.Config;
@@ -49,16 +49,16 @@ public class ProjectKorra implements Listener {
         Config.compatibility.evadeFalsePositives(
                 protocol,
                 compatibilityType,
-                new Enums.HackCategoryType[]{
-                        Enums.HackCategoryType.MOVEMENT,
-                        Enums.HackCategoryType.COMBAT
+                new CheckEnums.HackCategoryType[]{
+                        CheckEnums.HackCategoryType.MOVEMENT,
+                        CheckEnums.HackCategoryType.COMBAT
                 },
                 ticks
         );
         Config.compatibility.evadeFalsePositives(
                 protocol,
                 compatibilityType,
-                Enums.HackType.NoSwing,
+                CheckEnums.HackType.NO_SWING,
                 ticks
         );
     }

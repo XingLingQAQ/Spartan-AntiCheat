@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.compatibility;
 
 import ai.idealistic.vacan.Register;
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.configuration.ConfigurationBuilder;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.compatibility.manual.abilities.*;
@@ -402,26 +402,26 @@ public class Compatibility {
 
     public void evadeFalsePositives(PlayerProtocol protocol,
                                     Compatibility.CompatibilityType compatibilityType,
-                                    Enums.HackType[] hackTypes,
+                                    CheckEnums.HackType[] hackTypes,
                                     int ticks) {
-        for (Enums.HackType hackType : hackTypes) {
+        for (CheckEnums.HackType hackType : hackTypes) {
             protocol.profile().getRunner(hackType).addDisableCause(compatibilityType.toString(), null, ticks);
         }
     }
 
     public void evadeFalsePositives(PlayerProtocol protocol,
                                     Compatibility.CompatibilityType compatibilityType,
-                                    Enums.HackType hackType,
+                                    CheckEnums.HackType hackType,
                                     int ticks) {
         protocol.profile().getRunner(hackType).addDisableCause(compatibilityType.toString(), null, ticks);
     }
 
     public void evadeFalsePositives(PlayerProtocol protocol,
                                     Compatibility.CompatibilityType compatibilityType,
-                                    Enums.HackCategoryType[] types,
+                                    CheckEnums.HackCategoryType[] types,
                                     int ticks) {
-        for (Enums.HackType hackType : Enums.HackType.values()) {
-            for (Enums.HackCategoryType type : types) {
+        for (CheckEnums.HackType hackType : CheckEnums.HackType.values()) {
+            for (CheckEnums.HackCategoryType type : types) {
                 if (hackType.category == type) {
                     protocol.profile().getRunner(hackType).addDisableCause(compatibilityType.toString(), null, ticks);
                     break;
@@ -432,9 +432,9 @@ public class Compatibility {
 
     public void evadeFalsePositives(PlayerProtocol protocol,
                                     Compatibility.CompatibilityType compatibilityType,
-                                    Enums.HackCategoryType type,
+                                    CheckEnums.HackCategoryType type,
                                     int ticks) {
-        for (Enums.HackType hackType : Enums.HackType.values()) {
+        for (CheckEnums.HackType hackType : CheckEnums.HackType.values()) {
             if (hackType.category == type) {
                 protocol.profile().getRunner(hackType).addDisableCause(compatibilityType.toString(), null, ticks);
             }

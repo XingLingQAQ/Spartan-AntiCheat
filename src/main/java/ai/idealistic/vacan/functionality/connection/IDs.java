@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.functionality.connection;
 
-import ai.idealistic.vacan.api.API;
+import ai.idealistic.vacan.api.VacanAPI;
 import ai.idealistic.vacan.utils.math.AlgebraUtils;
 import lombok.Setter;
 
@@ -65,7 +65,7 @@ public class IDs {
 
     public static String hide(String id) {
         try {
-            double version = Double.parseDouble(API.getVersion().substring(6)),
+            double version = Double.parseDouble(VacanAPI.getVersion().substring(6)),
                     number = AlgebraUtils.cut(Integer.parseInt(id) / version, 6);
             return String.valueOf(number).replace("-", "*").replace(".", "-");
         } catch (Exception ex) {

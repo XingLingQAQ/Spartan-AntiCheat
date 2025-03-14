@@ -1,8 +1,8 @@
 package ai.idealistic.vacan.abstraction.check.implementation.combat;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.Check;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.check.definition.ImplementedDetection;
 import ai.idealistic.vacan.abstraction.event.PlayerTransactionEvent;
@@ -21,7 +21,7 @@ public class Velocity extends CheckRunner {
 
     private final CheckDetection vertical, horizontal;
 
-    public Velocity(Enums.HackType hackType, PlayerProtocol protocol) {
+    public Velocity(CheckEnums.HackType hackType, PlayerProtocol protocol) {
         super(hackType, protocol);
         this.vertical = new ImplementedDetection(this, null, Check.DetectionType.PACKETS, "vertical", true,
                 CheckDetection.DEFAULT_AVERAGE_TIME * 2L,

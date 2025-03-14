@@ -1,10 +1,10 @@
 package ai.idealistic.vacan.abstraction.configuration.implementation;
 
 import ai.idealistic.vacan.Register;
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.configuration.ConfigurationBuilder;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
-import ai.idealistic.vacan.api.API;
+import ai.idealistic.vacan.api.VacanAPI;
 import ai.idealistic.vacan.functionality.concurrent.GeneralThread;
 import ai.idealistic.vacan.functionality.moderation.AwarenessNotifications;
 import ai.idealistic.vacan.functionality.moderation.CrossServerNotifications;
@@ -312,7 +312,7 @@ public class SQLFeature extends ConfigurationBuilder {
                         String notification,
                         String information,
                         Material material,
-                        Enums.HackType hackType,
+                        CheckEnums.HackType hackType,
                         long time) {
         if (enabled) {
             String table = getTable();
@@ -328,7 +328,7 @@ public class SQLFeature extends ConfigurationBuilder {
                             + ", functionality) "
                             + "VALUES (" + syntaxForColumn(AntiCheatLogs.getDate(AntiCheatLogs.dateFormat, time))
                             + ", " + syntaxForColumn(CrossServerNotifications.getServerName())
-                            + ", " + syntaxForColumn(API.getVersion())
+                            + ", " + syntaxForColumn(VacanAPI.getVersion())
                             + ", " + syntaxForColumn(MultiVersion.serverVersion.toString())
                             + ", " + syntaxForColumn(PluginBase.getPlayerCount())
                             + ", " + syntaxForColumn(hasMaterial ? "mining" : hasCheck ? "violation" : "other")

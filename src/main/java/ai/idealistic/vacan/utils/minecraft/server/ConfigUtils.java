@@ -1,10 +1,10 @@
 package ai.idealistic.vacan.utils.minecraft.server;
 
 import ai.idealistic.vacan.Register;
-import ai.idealistic.vacan.abstraction.Enums.HackType;
 import ai.idealistic.vacan.abstraction.check.Check;
+import ai.idealistic.vacan.abstraction.check.CheckEnums.HackType;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
-import ai.idealistic.vacan.api.API;
+import ai.idealistic.vacan.api.VacanAPI;
 import ai.idealistic.vacan.functionality.moderation.CrossServerNotifications;
 import ai.idealistic.vacan.functionality.server.MultiVersion;
 import ai.idealistic.vacan.functionality.server.PluginBase;
@@ -32,7 +32,7 @@ public class ConfigUtils {
         message = replace(message, "{online}", String.valueOf(PluginBase.getPlayerCount()));
         message = replace(message, "{motd}", Bukkit.getMotd());
         message = replace(message, "{server:name}", CrossServerNotifications.getServerName());
-        message = replace(message, "{plugin:version}", API.getVersion());
+        message = replace(message, "{plugin:version}", VacanAPI.getVersion());
         message = replace(message, "{server:version}", MultiVersion.serverVersion.toString());
         message = replace(message, "{line}", "\n");
 

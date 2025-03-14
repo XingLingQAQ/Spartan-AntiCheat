@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.functionality.moderation;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
+import ai.idealistic.vacan.api.Permission;
 import ai.idealistic.vacan.functionality.server.Config;
 import ai.idealistic.vacan.functionality.server.Permissions;
 import ai.idealistic.vacan.functionality.server.PluginBase;
@@ -44,7 +44,7 @@ public class DetectionNotifications {
     }
 
     public static boolean hasPermission(PlayerProtocol p) {
-        return Permissions.has(p.bukkit(), Enums.Permission.NOTIFICATIONS);
+        return Permissions.has(p.bukkit(), Permission.NOTIFICATIONS);
     }
 
     public static Integer getFrequency(PlayerProtocol p) {

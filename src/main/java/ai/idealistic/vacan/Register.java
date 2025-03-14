@@ -56,7 +56,7 @@ public class Register extends JavaPlugin {
         enable(new VehicleDeathEvent());
         enable(new HealthEvent());
         enable(new CombatEvent());
-        enable(new BlockPlaceEvent());
+        enable(new PlaceEvent());
         enable(new MovementEvent());
         enable(new TeleportEvent());
         enable(new DeathEvent());

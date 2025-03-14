@@ -1,11 +1,11 @@
 package ai.idealistic.vacan.abstraction.inventory.implementation;
 
-import ai.idealistic.vacan.abstraction.Enums;
-import ai.idealistic.vacan.abstraction.Enums.HackType;
-import ai.idealistic.vacan.abstraction.Enums.Permission;
 import ai.idealistic.vacan.abstraction.check.Check;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums.HackType;
 import ai.idealistic.vacan.abstraction.inventory.InventoryMenu;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
+import ai.idealistic.vacan.api.Permission;
 import ai.idealistic.vacan.functionality.command.CommandExecution;
 import ai.idealistic.vacan.functionality.connection.DiscordServer;
 import ai.idealistic.vacan.functionality.moderation.clickable.ClickableMessage;
@@ -31,7 +31,7 @@ public class ManageChecks extends InventoryMenu {
 
     @Override
     public boolean internalOpen(PlayerProtocol protocol, boolean permissionMessage, Object object) {
-        for (HackType check : Enums.HackType.values()) {
+        for (HackType check : CheckEnums.HackType.values()) {
             addCheck(protocol, check);
         }
         add("§cDisable silent checking for all checks", null, new ItemStack(MaterialUtils.get("lead")), 46);

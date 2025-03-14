@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.abstraction.check.implementation.combat.killaura;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.check.implementation.combat.killaura.movedirection.MoveDirection;
 import ai.idealistic.vacan.abstraction.event.EntityAttackPlayerEvent;
@@ -20,7 +20,7 @@ public class KillAura extends CheckRunner {
     private final MoveDirection moveDirection;
     private final MoveLength moveLength;
 
-    public KillAura(Enums.HackType hackType, PlayerProtocol protocol) {
+    public KillAura(CheckEnums.HackType hackType, PlayerProtocol protocol) {
         super(hackType, protocol);
         irregular = new Irregular(this);
         hitTime = new HitTime(this);

@@ -1,8 +1,8 @@
 package ai.idealistic.vacan.abstraction.check.example;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.Check;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.check.definition.ImplementedDetection;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
@@ -12,7 +12,7 @@ public class CheckExecutorExample extends CheckRunner {
     private final DetectionExecutorExample detection1;
     private final CheckDetection detection2;
 
-    public CheckExecutorExample(Enums.HackType hackType, PlayerProtocol protocol, String playerName) {
+    public CheckExecutorExample(CheckEnums.HackType hackType, PlayerProtocol protocol, String playerName) {
         super(hackType, protocol);
 
         this.detection1 = new DetectionExecutorExample(

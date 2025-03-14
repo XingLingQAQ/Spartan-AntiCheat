@@ -1,6 +1,5 @@
 package ai.idealistic.vacan.abstraction.check;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.compatibility.Compatibility;
 import ai.idealistic.vacan.compatibility.manual.abilities.ItemsAdder;
@@ -31,7 +30,7 @@ public abstract class CheckRunner extends CheckProcess {
     private boolean cancelled;
     private final Map<String, CheckDetection> detections;
 
-    public CheckRunner(Enums.HackType hackType, PlayerProtocol protocol) {
+    public CheckRunner(CheckEnums.HackType hackType, PlayerProtocol protocol) {
         super(hackType, protocol);
         this.creation = System.currentTimeMillis();
         this.detections = new ConcurrentHashMap<>(2);

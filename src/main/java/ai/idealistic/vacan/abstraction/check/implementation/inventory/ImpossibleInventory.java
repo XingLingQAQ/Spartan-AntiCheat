@@ -1,8 +1,8 @@
 package ai.idealistic.vacan.abstraction.check.implementation.inventory;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.Check;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.check.definition.ImplementedDetection;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
@@ -43,7 +43,7 @@ public class ImpossibleInventory extends CheckRunner {
 
     private long autoTotem;
 
-    public ImpossibleInventory(Enums.HackType hackType, PlayerProtocol protocol) {
+    public ImpossibleInventory(CheckEnums.HackType hackType, PlayerProtocol protocol) {
         super(hackType, protocol);
         this.autoTotemDetection = new ImplementedDetection(this, null, null, "auto_totem", true);
         this.closedInventoryDetection = new ImplementedDetection(this, null, null, "closed_inventory", true);

@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.compatibility.manual.building;
 
 import ai.idealistic.vacan.Register;
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.compatibility.Compatibility;
 import ai.idealistic.vacan.functionality.server.Config;
 import ai.idealistic.vacan.functionality.server.PluginBase;
@@ -22,11 +22,11 @@ public class VeinMiner implements Listener {
             Config.compatibility.evadeFalsePositives(
                     PluginBase.getProtocol(e.getPlayer()),
                     Compatibility.CompatibilityType.VEIN_MINER,
-                    new Enums.HackType[]{
-                            Enums.HackType.NoSwing,
-                            Enums.HackType.FastBreak,
-                            Enums.HackType.GhostHand,
-                            Enums.HackType.BlockReach
+                    new CheckEnums.HackType[]{
+                            CheckEnums.HackType.NO_SWING,
+                            CheckEnums.HackType.FAST_BREAK,
+                            CheckEnums.HackType.GHOST_HAND,
+                            CheckEnums.HackType.BLOCK_REACH
                     },
                     30
             );

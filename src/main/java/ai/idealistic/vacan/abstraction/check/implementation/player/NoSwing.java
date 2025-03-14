@@ -1,7 +1,7 @@
 package ai.idealistic.vacan.abstraction.check.implementation.player;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.check.definition.ImplementedDetection;
 import ai.idealistic.vacan.abstraction.data.Buffer;
@@ -30,7 +30,7 @@ public class NoSwing extends CheckRunner {
     private final Buffer.IndividualBuffer damageBuffer;
     private long checkDamage;
 
-    public NoSwing(Enums.HackType hackType, PlayerProtocol protocol) {
+    public NoSwing(CheckEnums.HackType hackType, PlayerProtocol protocol) {
         super(hackType, protocol);
         this.breakTime = Long.MAX_VALUE;
         this.animationTime = Long.MAX_VALUE;

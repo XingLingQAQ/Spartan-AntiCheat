@@ -1,6 +1,6 @@
 package ai.idealistic.vacan.abstraction.profiling;
 
-import ai.idealistic.vacan.abstraction.Enums;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.protocol.PlayerProtocol;
 import ai.idealistic.vacan.api.PlayerFoundOreEvent;
 import ai.idealistic.vacan.functionality.server.Config;
@@ -61,7 +61,7 @@ public class MiningHistory {
                     if (miningHistory != null) {
                         String pluralKey = key.endsWith("s") ? (key + "es") : (key + "s");
                         miningHistory.increaseMines(environment, amount);
-                        protocol.profile().getRunner(Enums.HackType.XRay).handle(
+                        protocol.profile().getRunner(CheckEnums.HackType.X_RAY).handle(
                                 cancelled,
                                 new Object[]{environment, miningHistory, ore, pluralKey});
                     }

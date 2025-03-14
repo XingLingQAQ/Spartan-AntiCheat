@@ -1,8 +1,8 @@
 package ai.idealistic.vacan.abstraction.check.implementation.inventory;
 
-import ai.idealistic.vacan.abstraction.Enums;
 import ai.idealistic.vacan.abstraction.check.Check;
 import ai.idealistic.vacan.abstraction.check.CheckDetection;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
 import ai.idealistic.vacan.abstraction.check.CheckRunner;
 import ai.idealistic.vacan.abstraction.check.definition.ImplementedDetection;
 import ai.idealistic.vacan.abstraction.data.Buffer;
@@ -29,7 +29,7 @@ public class InventoryClicks extends CheckRunner {
             fastBuffer,
             shiftBuffer;
 
-    public InventoryClicks(Enums.HackType hackType, PlayerProtocol protocol) {
+    public InventoryClicks(CheckEnums.HackType hackType, PlayerProtocol protocol) {
         super(hackType, protocol);
         this.shift = new ImplementedDetection(this, Check.DataType.JAVA, null, "shift", true);
         this.slow = new ImplementedDetection(this, Check.DataType.JAVA, null, "slow", true);
