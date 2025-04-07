@@ -1,6 +1,6 @@
 package me.vagdedes.spartan.api;
 
-import ai.idealistic.vacan.Register;
+import ai.idealistic.spartan.Register;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

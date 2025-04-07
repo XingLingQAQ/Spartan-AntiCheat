@@ -1,15 +1,15 @@
-name: Vacan
-authors: [Evangelos Dedes @Vagdedes - Since 2016, pawsashatoy - Since 2024, GRArthas - Since 2025]
-main: ai.idealistic.vacan.Register
-version: 4.0.3.3
-website: https://www.vagdedes.com
+name: Spartan
+authors: [Evangelos Dedes @Vagdedes - Since 2016, pawsashatoy - Since 2024]
+main: ai.idealistic.spartan.Register
+version: 4.0.3.8
+website: https://www.idealistic.ai
 description: The intuitive solution when it comes to anti-cheat protection
 api-version: 1.13
 softdepend: [mcMMO, ProtocolSupport, VeinMiner, EcoEnchants, CustomEnchantsPlus,
              aSkyBlock, AdvancedAbilities, CrackShot, CrackShotPlus, CraftBook, GrapplingHook, ProtocolLib,
              MagicSpells, MineBomb, MineTinker, MythicMobs, PrinterMode, ProjectKorra, RealDualWield,
-             SuperPickaxe, TreeFeller, Vehicles, WildTools, floodgate-bukkit, FileGUI]
+             SuperPickaxe, TreeFeller, Vehicles, WildTools, floodgate-bukkit]
 load: POSTWORLD
 folia-supported: true
 commands:
-  vacan:
+  spartan:
