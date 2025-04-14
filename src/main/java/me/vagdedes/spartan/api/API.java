@@ -1,7 +1,7 @@
 package me.vagdedes.spartan.api;
 
-import me.vagdedes.spartan.system.Enums.HackType;
-import me.vagdedes.spartan.system.Enums.Permission;
+import me.vagdedes.spartan.api.system.Enums.HackType;
+import me.vagdedes.spartan.api.system.Enums.Permission;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -83,7 +83,6 @@ public class API {
         return BackgroundAPI.isSilent(HackType);
     }
 
-    @Deprecated
     public static int getVL(Player p, HackType HackType) {
         return BackgroundAPI.getVL(p, HackType);
     }
@@ -92,14 +91,16 @@ public class API {
         return BackgroundAPI.getCertainty(p, HackType);
     }
 
-    @Deprecated
-    public static double getDecimalVL(Player p, HackType HackType) {
-        return BackgroundAPI.getDecimalVL(p, HackType);
+    public static double getDecimalVL(Player p, HackType hackType) {
+        return BackgroundAPI.getDecimalVL(p, hackType);
     }
 
-    @Deprecated
     public static int getVL(Player p) {
         return BackgroundAPI.getVL(p);
+    }
+
+    public static double getDecimalVL(Player p) {
+        return BackgroundAPI.getDecimalVL(p);
     }
 
     @Deprecated
@@ -176,12 +177,10 @@ public class API {
         BackgroundAPI.stopCheck(p, HackType);
     }
 
-    @Deprecated
     public static void resetVL() {
         BackgroundAPI.resetVL();
     }
 
-    @Deprecated
     public static void resetVL(Player p) {
         BackgroundAPI.resetVL(p);
     }

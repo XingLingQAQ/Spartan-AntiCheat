@@ -1,18 +1,20 @@
 package me.vagdedes.spartan.api;
 
-import me.vagdedes.spartan.system.Enums.HackType;
+import ai.idealistic.spartan.abstraction.check.CheckEnums.HackType;
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-
-import java.util.Collection;
 
 public class PlayerViolationCommandEvent extends Event implements Cancellable {
 
     private final Player p;
     private final HackType h;
     private final String c;
+    @Setter
+    @Getter
     private boolean cancelled;
 
     public PlayerViolationCommandEvent(Player player, HackType HackType, String command) {
@@ -30,21 +32,8 @@ public class PlayerViolationCommandEvent extends Event implements Cancellable {
         return h;
     }
 
-    @Deprecated
-    public HackType[] getHackTypes() {
-        return null;
-    }
-
     public String getCommand() {
         return c;
-    }
-
-    public boolean isCancelled() {
-        return cancelled;
-    }
-
-    public void setCancelled(boolean b) {
-        this.cancelled = b;
     }
 
     private static final HandlerList handlers = new HandlerList();

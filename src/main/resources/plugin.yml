@@ -1,14 +1,14 @@
 name: Spartan
 authors: [Evangelos Dedes @Vagdedes - Since 2016, pawsashatoy - Since 2024]
-main: com.vagdedes.spartan.Register
-version: 4.0.2.0
-website: https://www.vagdedes.com
-description: In the mission to create & maintain the best Minecraft anti-cheat, powered by Machine Learning (ML)
+main: ai.idealistic.spartan.Register
+version: 4.0.4.0
+website: https://www.idealistic.ai
+description: The intuitive solution when it comes to anti-cheat protection
 api-version: 1.13
-softdepend: [mcMMO, ProtocolSupport, VeinMiner, AcidRain, AcidIsland, EcoEnchants, CustomEnchantsPlus,
+softdepend: [mcMMO, ProtocolSupport, VeinMiner, EcoEnchants, CustomEnchantsPlus,
              aSkyBlock, AdvancedAbilities, CrackShot, CrackShotPlus, CraftBook, GrapplingHook, ProtocolLib,
              MagicSpells, MineBomb, MineTinker, MythicMobs, PrinterMode, ProjectKorra, RealDualWield,
-             SuperPickaxe, TreeFeller, Vehicles, WildTools, floodgate-bukkit, FileGUI]
+             SuperPickaxe, TreeFeller, Vehicles, WildTools, floodgate-bukkit]
 load: POSTWORLD
 folia-supported: true
 commands:

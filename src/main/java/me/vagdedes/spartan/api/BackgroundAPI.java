@@ -1,18 +1,7 @@
 package me.vagdedes.spartan.api;
 
-import com.vagdedes.spartan.Register;
-import com.vagdedes.spartan.abstraction.protocol.PlayerProtocol;
-import com.vagdedes.spartan.functionality.connection.cloud.IDs;
-import com.vagdedes.spartan.functionality.moderation.Wave;
-import com.vagdedes.spartan.functionality.moderation.AwarenessNotifications;
-import com.vagdedes.spartan.functionality.moderation.DetectionNotifications;
-import com.vagdedes.spartan.functionality.server.Config;
-import com.vagdedes.spartan.functionality.server.Permissions;
-import com.vagdedes.spartan.functionality.server.PluginBase;
-import com.vagdedes.spartan.functionality.tracking.PlayerEvidence;
-import me.vagdedes.spartan.system.Enums;
-import me.vagdedes.spartan.system.Enums.HackType;
-import me.vagdedes.spartan.system.Enums.Permission;
+import me.vagdedes.spartan.api.system.Enums.HackType;
+import me.vagdedes.spartan.api.system.Enums.Permission;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -22,430 +11,340 @@ import java.util.UUID;
 public class BackgroundAPI {
 
     static String licenseID() {
-        return IDs.user();
+        return ai.idealistic.spartan.api.BackgroundAPI.licenseID();
     }
 
     static String getVersion() {
-        return Register.plugin != null ? Register.plugin.getDescription().getVersion() : "Unknown";
+        return ai.idealistic.spartan.api.BackgroundAPI.getVersion();
     }
 
     static String getMessage(String path) {
-        return Config.messages.getColorfulString(path);
+        return ai.idealistic.spartan.api.BackgroundAPI.getMessage(path);
     }
 
     static boolean getSetting(String path) {
-        return Config.settings.getBoolean(path);
+        return ai.idealistic.spartan.api.BackgroundAPI.getSetting(path);
     }
 
     @Deprecated
     static String getCategory(Player p, HackType hackType) {
-        AwarenessNotifications.forcefullySend("The API method 'getCategory' has been removed.");
-        return null;
+        return ai.idealistic.spartan.api.BackgroundAPI.getCategory(p, hackType.getHackType());
     }
 
     static boolean hasVerboseEnabled(Player p) {
-        PlayerProtocol protocol = PluginBase.getProtocol(p);
-        return DetectionNotifications.isVerboseEnabled(protocol);
+        return ai.idealistic.spartan.api.BackgroundAPI.hasVerboseEnabled(p);
     }
 
     static boolean hasNotificationsEnabled(Player p) {
-        PlayerProtocol protocol = PluginBase.getProtocol(p);
-        return DetectionNotifications.isEnabled(protocol);
+        return ai.idealistic.spartan.api.BackgroundAPI.hasNotificationsEnabled(p);
     }
 
     @Deprecated
     static int getViolationResetTime() {
-        AwarenessNotifications.forcefullySend("The API method 'getViolationResetTime' has been removed.");
-        return 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getViolationResetTime();
     }
 
     static void setVerbose(Player p, boolean value) {
-        PlayerProtocol protocol = PluginBase.getProtocol(p);
-
-        if (value) {
-            DetectionNotifications.addVerbose(protocol);
-        } else {
-            DetectionNotifications.removeVerbose(protocol);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.setVerbose(p, value);
     }
 
     static void setNotifications(Player p, boolean value) {
-        PlayerProtocol protocol = PluginBase.getProtocol(p);
-
-        if (value) {
-            DetectionNotifications.set(protocol, DetectionNotifications.defaultFrequency);
-        } else {
-            DetectionNotifications.remove(protocol);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.setNotifications(p, value);
     }
 
     @Deprecated
     static void setVerbose(Player p, boolean value, int frequency) {
-        AwarenessNotifications.forcefullySend("The API method 'setVerbose' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.setVerbose(p, value, frequency);
     }
 
     static void setNotifications(Player p, int frequency) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            PlayerProtocol protocol = PluginBase.getProtocol(p);
-            DetectionNotifications.set(protocol, Math.abs(frequency));
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.setNotifications(p, frequency);
     }
 
     static int getPing(Player p) {
-        return PluginBase.getProtocol(p).getPing();
+        return ai.idealistic.spartan.api.BackgroundAPI.getPing(p);
     }
 
     @Deprecated
     static double getTPS() {
-        AwarenessNotifications.forcefullySend("The API method 'getTPS' has been removed.");
-        return 0.0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getTPS();
     }
 
     static boolean hasPermission(Player p, Permission Permission) {
-        return Permissions.has(p, Permission);
+        return ai.idealistic.spartan.api.BackgroundAPI.hasPermission(p, Permission.getPermission());
     }
 
     static boolean isEnabled(HackType HackType) {
-        return HackType.getCheck().isEnabled(null, null);
+        return ai.idealistic.spartan.api.BackgroundAPI.isEnabled(HackType.getHackType());
     }
 
     static boolean isSilent(HackType HackType) {
-        return HackType.getCheck().isSilent(null, null);
+        return ai.idealistic.spartan.api.BackgroundAPI.isSilent(HackType.getHackType());
     }
 
-    @Deprecated
     static int getVL(Player p, HackType hackType) {
-        AwarenessNotifications.forcefullySend("The API method 'getVL' has been removed.");
-        return 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getVL(p, hackType.getHackType());
     }
 
     static double getCertainty(Player p, HackType hackType) {
-        PlayerProtocol protocol = PluginBase.getProtocol(p);
-        return PlayerEvidence.probabilityToCertainty(
-                protocol.profile().getRunner(hackType).getExtremeProbability(
-                        protocol.bukkitExtra.dataType,
-                        protocol.bukkitExtra.detectionType
-                )
-        );
+        return ai.idealistic.spartan.api.BackgroundAPI.getCertainty(p, hackType.getHackType());
     }
 
-    @Deprecated
-    static double getDecimalVL(Player p, HackType HackType) {
-        AwarenessNotifications.forcefullySend("The API method 'getDecimalVL' has been removed.");
-        return 0.0;
+    static double getDecimalVL(Player p, HackType hackType) {
+        return ai.idealistic.spartan.api.BackgroundAPI.getDecimalVL(p, hackType.getHackType());
     }
 
-    @Deprecated
     static int getVL(Player p) {
-        AwarenessNotifications.forcefullySend("The API method 'getVL' has been removed.");
-        return 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getVL(p);
+    }
+
+    static double getDecimalVL(Player p) {
+        return ai.idealistic.spartan.api.BackgroundAPI.getDecimalVL(p);
     }
 
     @Deprecated
     static void setVL(Player p, HackType HackType, int amount) {
-        AwarenessNotifications.forcefullySend("The API method 'setVL' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.setVL(p, HackType.getHackType(), amount);
     }
 
     @Deprecated
     static int getCancelViolation(HackType hackType, String worldName) {
-        return getCancelViolation(hackType);
+        return ai.idealistic.spartan.api.BackgroundAPI.getCancelViolation(hackType.getHackType(), worldName);
     }
 
     @Deprecated
     static int getCancelViolation(HackType hackType) {
-        AwarenessNotifications.forcefullySend("The API method 'getCancelViolation' has been removed.");
-        return 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getCancelViolation(hackType.getHackType());
     }
 
     @Deprecated
     static int getViolationDivisor(Player p, HackType hackType) {
-        AwarenessNotifications.forcefullySend("The API method 'getViolationDivisor' has been removed.");
-        return 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getViolationDivisor(p, hackType.getHackType());
     }
 
     static void reloadConfig() {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            Config.reload(null);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.reloadConfig();
     }
 
     @Deprecated
     static void reloadPermissions() {
-        AwarenessNotifications.forcefullySend("The API method 'reloadPermissions' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.reloadPermissions();
     }
 
     @Deprecated
     static void reloadPermissions(Player p) {
-        AwarenessNotifications.forcefullySend("The API method 'reloadPermissions' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.reloadPermissions(p);
     }
 
     static void enableCheck(HackType HackType) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            HackType.getCheck().setEnabled(null, true);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.enableCheck(HackType.getHackType());
     }
 
     static void disableCheck(HackType HackType) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            HackType.getCheck().setEnabled(null, false);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.disableCheck(HackType.getHackType());
     }
 
     static void cancelCheck(Player p, HackType hackType, int ticks) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            PlayerProtocol protocol = PluginBase.getProtocol(p);
-            protocol.profile().getRunner(hackType).addDisableCause("Developer-API", null, ticks);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.cancelCheck(p, hackType.getHackType(), ticks);
     }
 
     static void cancelCheckPerVerbose(Player p, String string, int ticks) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) { // Keep the null pointer protection to prevent the method from acting differently
-            PlayerProtocol protocol = PluginBase.getProtocol(p);
-
-            for (HackType hackType : Enums.HackType.values()) {
-                protocol.profile().getRunner(hackType).addDisableCause("Developer-API", string, ticks);
-            }
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.cancelCheckPerVerbose(p, string, ticks);
     }
 
     static void enableSilentChecking(HackType HackType) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            HackType.getCheck().setSilent(null, true);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.enableSilentChecking(HackType.getHackType());
     }
 
     static void disableSilentChecking(HackType HackType) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            HackType.getCheck().setSilent(null, false);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.disableSilentChecking(HackType.getHackType());
     }
 
     static void enableSilentChecking(Player p, HackType hackType) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            PlayerProtocol protocol = PluginBase.getProtocol(p);
-            protocol.profile().getRunner(hackType).addSilentCause("Developer-API", null, 0);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.enableSilentChecking(p, hackType.getHackType());
     }
 
     static void disableSilentChecking(Player p, HackType hackType) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            PlayerProtocol protocol = PluginBase.getProtocol(p);
-            protocol.profile().getRunner(hackType).removeSilentCause();
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.disableSilentChecking(p, hackType.getHackType());
     }
 
     static void startCheck(Player p, HackType hackType) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            PlayerProtocol protocol = PluginBase.getProtocol(p);
-            protocol.profile().getRunner(hackType).removeDisableCause();
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.startCheck(p, hackType.getHackType());
     }
 
     static void stopCheck(Player p, HackType hackType) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            PlayerProtocol protocol = PluginBase.getProtocol(p);
-            protocol.profile().getRunner(hackType).addDisableCause("Developer-API", null, 0);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.stopCheck(p, hackType.getHackType());
     }
 
-    @Deprecated
     static void resetVL() {
-        AwarenessNotifications.forcefullySend("The API method 'resetVL' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.resetVL();
     }
 
-    @Deprecated
     static void resetVL(Player p) {
-        AwarenessNotifications.forcefullySend("The API method 'resetVL' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.resetVL(p);
     }
 
     static boolean isBypassing(Player p) {
-        return Permissions.isBypassing(p, null);
+        return ai.idealistic.spartan.api.BackgroundAPI.isBypassing(p);
     }
 
     static boolean isBypassing(Player p, HackType HackType) {
-        return Permissions.isBypassing(p, HackType);
+        return ai.idealistic.spartan.api.BackgroundAPI.isBypassing(p, HackType.getHackType());
     }
 
     @Deprecated
     static void banPlayer(UUID uuid, String reason) {
-        AwarenessNotifications.forcefullySend("The API method 'banPlayer' has been removed.");
-
+        ai.idealistic.spartan.api.BackgroundAPI.banPlayer(uuid, reason);
     }
 
     @Deprecated
     static boolean isBanned(UUID uuid) {
-        AwarenessNotifications.forcefullySend("The API method 'isBanned' has been removed.");
-        return false;
+        return ai.idealistic.spartan.api.BackgroundAPI.isBanned(uuid);
     }
 
     @Deprecated
     static void unbanPlayer(UUID uuid) {
-        AwarenessNotifications.forcefullySend("The API method 'unbanPlayer' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.unbanPlayer(uuid);
     }
 
     @Deprecated
     static String getBanReason(UUID uuid) {
-        AwarenessNotifications.forcefullySend("The API method 'getBanReason' has been removed.");
-        return null;
+        return ai.idealistic.spartan.api.BackgroundAPI.getBanReason(uuid);
     }
 
     @Deprecated
     static String getBanPunisher(UUID uuid) {
-        AwarenessNotifications.forcefullySend("The API method 'getBanPunisher' has been removed.");
-        return null;
+        return ai.idealistic.spartan.api.BackgroundAPI.getBanPunisher(uuid);
     }
 
     @Deprecated
     static boolean isHacker(Player p) {
-        AwarenessNotifications.forcefullySend("The API method 'isHacker' has been removed.");
-        return false;
+        return ai.idealistic.spartan.api.BackgroundAPI.isHacker(p);
     }
 
     @Deprecated
     static boolean isLegitimate(Player p) {
-        AwarenessNotifications.forcefullySend("The API method 'isLegitimate' has been removed.");
-        return false;
+        return ai.idealistic.spartan.api.BackgroundAPI.isLegitimate(p);
     }
 
     @Deprecated
     static boolean hasMiningNotificationsEnabled(Player p) {
-        return hasNotificationsEnabled(p);
+        return ai.idealistic.spartan.api.BackgroundAPI.hasMiningNotificationsEnabled(p);
     }
 
     @Deprecated
     static void setMiningNotifications(Player p, boolean value) {
-        setNotifications(p, value);
+        ai.idealistic.spartan.api.BackgroundAPI.setMiningNotifications(p, value);
     }
 
     @Deprecated
     static int getCPS(Player p) {
-        AwarenessNotifications.forcefullySend("The API method 'getCPS' has been removed.");
-        return 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getCPS(p);
     }
 
     @Deprecated
     static UUID[] getBanList() {
-        AwarenessNotifications.forcefullySend("The API method 'getBanList' has been removed.");
-        return new UUID[]{};
+        return ai.idealistic.spartan.api.BackgroundAPI.getBanList();
     }
 
     static boolean addToWave(UUID uuid, String command) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            Wave.add(uuid, command);
-            return true;
-        }
-        return false;
+        return ai.idealistic.spartan.api.BackgroundAPI.addToWave(uuid, command);
     }
 
     static void removeFromWave(UUID uuid) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            Wave.remove(uuid);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.removeFromWave(uuid);
     }
 
     static void clearWave() {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            Wave.clear();
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.clearWave();
     }
 
     static void runWave() {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            Wave.start();
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.runWave();
     }
 
     static UUID[] getWaveList() {
-        return Wave.getWaveList();
+        return ai.idealistic.spartan.api.BackgroundAPI.getWaveList();
     }
 
     static int getWaveSize() {
-        return Wave.getWaveList().length;
+        return ai.idealistic.spartan.api.BackgroundAPI.getWaveSize();
     }
 
     static boolean isAddedToTheWave(UUID uuid) {
-        return Wave.getCommand(uuid) != null;
+        return ai.idealistic.spartan.api.BackgroundAPI.isAddedToTheWave(uuid);
     }
 
     static void warnPlayer(Player p, String reason) {
-        AwarenessNotifications.forcefullySend("The API method 'warnPlayer' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.warnPlayer(p, reason);
     }
 
     @Deprecated
     static void addPermission(Player p, Permission permission) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            AwarenessNotifications.forcefullySend("The API method 'addPermission' has been removed.");
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.addPermission(p, permission.getPermission());
     }
 
     @Deprecated
     static void sendClientSidedBlock(Player p, Location loc, Material m, byte b) {
-        AwarenessNotifications.forcefullySend("The API method 'sendClientSidedBlock' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.sendClientSidedBlock(p, loc, m, b);
     }
 
     @Deprecated
     static void destroyClientSidedBlock(Player p, Location loc) {
-        AwarenessNotifications.forcefullySend("The API method 'destroyClientSidedBlock' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.destroyClientSidedBlock(p, loc);
     }
 
     @Deprecated
     static void removeClientSidedBlocks(Player p) {
-        AwarenessNotifications.forcefullySend("The API method 'removeClientSidedBlocks' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.removeClientSidedBlocks(p);
     }
 
     @Deprecated
     static boolean containsClientSidedBlock(Player p, Location loc) {
-        AwarenessNotifications.forcefullySend("The API method 'containsClientSidedBlock' has been removed.");
-        return false;
+        return ai.idealistic.spartan.api.BackgroundAPI.containsClientSidedBlock(p, loc);
     }
 
     @Deprecated
     static Material getClientSidedBlockMaterial(Player p, Location loc) {
-        AwarenessNotifications.forcefullySend("The API method 'getClientSidedBlockMaterial' has been removed.");
-        return null;
+        return ai.idealistic.spartan.api.BackgroundAPI.getClientSidedBlockMaterial(p, loc);
     }
 
     @Deprecated
     static byte getClientSidedBlockData(Player p, Location loc) {
-        AwarenessNotifications.forcefullySend("The API method 'getClientSidedBlockData' has been removed.");
-        return (byte) 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getClientSidedBlockData(p, loc);
     }
 
     static String getConfiguredCheckName(HackType hackType) {
-        return hackType.getCheck().getName();
+        return ai.idealistic.spartan.api.BackgroundAPI.getConfiguredCheckName(hackType.getHackType());
     }
 
     static void setConfiguredCheckName(HackType hackType, String name) {
-        if (Config.settings.getBoolean("Important.enable_developer_api")) {
-            hackType.getCheck().setName(name);
-        }
+        ai.idealistic.spartan.api.BackgroundAPI.setConfiguredCheckName(hackType.getHackType(), name);
     }
 
     @Deprecated
     static void disableVelocityProtection(Player p, int ticks) {
-        AwarenessNotifications.forcefullySend("The API method 'disableVelocityProtection' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.disableVelocityProtection(p, ticks);
     }
 
     @Deprecated
     static void setOnGround(Player p, int ticks) {
-        AwarenessNotifications.forcefullySend("The API method 'setOnGround' has been removed.");
+        ai.idealistic.spartan.api.BackgroundAPI.setOnGround(p, ticks);
     }
 
     @Deprecated
     static int getMaxPunishmentViolation(HackType hackType) {
-        AwarenessNotifications.forcefullySend("The API method 'getMaxPunishmentViolation' has been removed.");
-        return 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getMaxPunishmentViolation(hackType.getHackType());
     }
 
     @Deprecated
     static int getMinPunishmentViolation(HackType hackType) {
-        AwarenessNotifications.forcefullySend("The API method 'getMinPunishmentViolation' has been removed.");
-        return 0;
+        return ai.idealistic.spartan.api.BackgroundAPI.getMinPunishmentViolation(hackType.getHackType());
     }
 
     @Deprecated
     static boolean mayPunishPlayer(Player p, HackType hackType) {
-        AwarenessNotifications.forcefullySend("The API method 'mayPunishPlayer' has been removed.");
-        return false;
+        return ai.idealistic.spartan.api.BackgroundAPI.mayPunishPlayer(p, hackType.getHackType());
     }
+
 }

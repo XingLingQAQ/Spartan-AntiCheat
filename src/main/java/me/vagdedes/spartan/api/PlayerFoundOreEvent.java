@@ -1,5 +1,7 @@
 package me.vagdedes.spartan.api;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,6 +15,8 @@ public class PlayerFoundOreEvent extends Event implements Cancellable {
     private final String me;
     private final Location l;
     private final Material ma;
+    @Setter
+    @Getter
     private boolean cancelled;
 
     public PlayerFoundOreEvent(Player player, String message, Location location, Material material) {
@@ -37,14 +41,6 @@ public class PlayerFoundOreEvent extends Event implements Cancellable {
 
     public Material getMaterial() {
         return ma;
-    }
-
-    public boolean isCancelled() {
-        return cancelled;
-    }
-
-    public void setCancelled(boolean b) {
-        this.cancelled = b;
     }
 
     private static final HandlerList handlers = new HandlerList();

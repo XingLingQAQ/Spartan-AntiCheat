@@ -1,6 +1,8 @@
 package me.vagdedes.spartan.api;
 
-import me.vagdedes.spartan.system.Enums.HackType;
+import ai.idealistic.spartan.abstraction.check.CheckEnums.HackType;
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -10,6 +12,8 @@ public class CheckCancelEvent extends Event implements Cancellable {
 
     private final Player p;
     private final HackType h;
+    @Setter
+    @Getter
     private boolean cancelled;
 
     public CheckCancelEvent(Player player, HackType HackType) {
@@ -24,14 +28,6 @@ public class CheckCancelEvent extends Event implements Cancellable {
 
     public HackType getHackType() {
         return h;
-    }
-
-    public boolean isCancelled() {
-        return cancelled;
-    }
-
-    public void setCancelled(boolean b) {
-        this.cancelled = b;
     }
 
     private static final HandlerList handlers = new HandlerList();
