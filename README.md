@@ -1,3 +1,4 @@
+<h1>HTTPS://SPARTAN.TOP</h1>
 <img src="https://vagdedes.com/.images/spartan/banner.png" />
 
 <b><span class="bbcode-size-7"><u>BLOCKED HACKS</u></span></b>
