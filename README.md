@@ -1,4 +1,4 @@
-<h1><a href="https://www.patreon.com/SpartanAntiCheat/redeem/90EDA">Try Spartan for free!</a></h1>
+<h1><a href="https://spartan.top">Buy Spartan here</a></h1>
 <img src="https://vagdedes.com/.images/spartan/banner.png" />
 
 <b><span class="bbcode-size-7"><u>BLOCKED HACKS</u></span></b>
